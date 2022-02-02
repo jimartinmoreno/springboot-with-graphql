@@ -1,5 +1,6 @@
 package com.springboot.graphql.api.springbootgraphqlapi.graphql.provider;
 
+import com.springboot.graphql.api.springbootgraphqlapi.graphql.fetcher.MyMoviesDataFetcher;
 import com.springboot.graphql.api.springbootgraphqlapi.model.Movie;
 import com.springboot.graphql.api.springbootgraphqlapi.repository.MovieRepository;
 import com.springboot.graphql.api.springbootgraphqlapi.graphql.fetcher.AllMoviesDataFetcher;
@@ -30,6 +31,9 @@ public class GraphQLProvider {
     @Autowired
     private MovieDataFetcher movieDataFetcher;
 
+    @Autowired
+    private MyMoviesDataFetcher myMoviesDataFetcher;
+
     @Value("classpath:schema.graphql")
     private Resource resource;
 
@@ -37,8 +41,9 @@ public class GraphQLProvider {
         return RuntimeWiring.newRuntimeWiring()
                 .type("Query", typeWiring -> typeWiring
                         .dataFetcher("allMovies", allMoviesDataFetcher)
-                        .dataFetcher("myMovies", allMoviesDataFetcher)
-                        .dataFetcher("movie", movieDataFetcher))
+                        .dataFetcher("movie", movieDataFetcher)
+                        // NACHO el fetcher se puede crear con una funcion lambda
+                        .dataFetcher("myMovies", myMoviesDataFetcher.getMyMoviesDataFetcher()))
                 .build();
     }
 
