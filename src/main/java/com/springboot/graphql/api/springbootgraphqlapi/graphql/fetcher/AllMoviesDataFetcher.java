@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * Created by fer on 13/11/19.
- */
 @Component
 public class AllMoviesDataFetcher implements DataFetcher<List<Movie>> {
 
@@ -20,6 +17,7 @@ public class AllMoviesDataFetcher implements DataFetcher<List<Movie>> {
 
     @Override
     public List<Movie> get(DataFetchingEnvironment dataFetchingEnvironment) {
+
         return movieRepository.findAll();
     }
 }

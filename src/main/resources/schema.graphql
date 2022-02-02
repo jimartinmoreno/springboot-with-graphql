@@ -4,6 +4,7 @@ schema{
 type Query{
     allMovies: [Movie]
     movie(id: String): Movie
+    myMovies: [Movie]
 }
 type Movie{
     id:String

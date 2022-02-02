@@ -6,16 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Created by fer on 13/11/19.
- */
 @Table
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @Builder
+@Data
 public class Movie {
 
     @Id
@@ -24,5 +20,4 @@ public class Movie {
     private String[] directors;
     private String[] actors;
     private String releaseDate;
-
 }

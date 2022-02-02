@@ -6,13 +6,11 @@ import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by fer on 13/11/19.
- */
-@Component
+@Service
 public class MovieDataFetcher implements DataFetcher<Movie> {
 
     @Autowired
